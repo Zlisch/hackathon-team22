@@ -22,32 +22,58 @@ Papa.parse("data/data.csv", {
     document.getElementById("avgItemValue").textContent = `$${avgItemValue.toFixed(2)}`;
 
     // ---- Bar Chart: Top Selling Items by Orders ----
-    const sorted = [...data].sort((a, b) => b.Orders - a.Orders).slice(0, 10);
-    const barLabels = sorted.map(r => r.ItemName);
-    const barData = sorted.map(r => r.Orders);
-
-    new Chart(document.getElementById("barChart"), {
-      type: 'bar',
-      data: {
-        labels: barLabels,
-        datasets: [{
-          label: 'Orders',
-          data: barData,
-          backgroundColor: 'rgba(106, 137, 247, 0.7)'
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: { legend: { display: false } },
-        scales: {
-          y: { beginAtZero: true }
-        }
+    const ordersByItem = {};
+    data.forEach(row => {
+      if (ordersByItem[row.ItemName]) {
+        ordersByItem[row.ItemName] += row.Orders;
+      } else {
+        ordersByItem[row.ItemName] = row.Orders;
       }
     });
+    const sorted = Object.entries(ordersByItem)
+    .sort((a, b) => b[1] - a[1]) // sort by total orders
+    .slice(0, 10); // top 10 items
+
+    const barLabels = sorted.map(([itemName]) => itemName);
+    const barData = sorted.map(([_, totalOrders]) => totalOrders);
+    new Chart(document.getElementById("barChart"), {
+    type: 'bar',
+    data: {
+      labels: barLabels,
+      datasets: [{
+        label: 'Orders',
+        data: barData,
+        backgroundColor: 'rgba(106, 137, 247, 0.7)'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+
+
+
+
 
     // ---- Pie Chart: Revenue Share by Item ----
-    const pieLabels = data.map(row => row.ItemName);
-    const pieData = data.map(row => row.Revenue);
+   // Aggregate revenue by item name
+  const revenueByItem = {};
+
+  data.forEach(row => {
+    if (revenueByItem[row.ItemName]) {
+      revenueByItem[row.ItemName] += row.Revenue;
+    } else {
+      revenueByItem[row.ItemName] = row.Revenue;
+    }
+  });
+
+const pieLabels = Object.keys(revenueByItem);
+const pieData = Object.values(revenueByItem);
+
 
     new Chart(document.getElementById("pieChart"), {
       type: 'pie',
