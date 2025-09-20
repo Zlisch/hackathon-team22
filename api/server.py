@@ -16,13 +16,20 @@ os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 @app.route("/get_advice", methods=["POST"])
 def get_advice():
-    df = pd.read_csv(os.path.join(OUTPUT_FOLDER, "pos_data.csv"))
+    df = pd.read_csv(os.path.join(OUTPUT_FOLDER, "data.csv"))
     top_items = df.sort_values("Orders", ascending=False).head(3)
     bottom_items = df.sort_values("Orders", ascending=True).head(3)
+    
+    store_df = pd.read_csv(os.path.join(OUTPUT_FOLDER, "store_profile.csv"))
+    store_info = store_df.iloc[0].to_dict()
+    store_summary = "\n".join([f"{k}: {v}" for k, v in store_info.items()])
 
     summary = f"Top items:\n{top_items.to_string(index=False)}\n\nBottom items:\n{bottom_items.to_string(index=False)}"
     prompt = f"""
-    You are a marketing advisor for cafés.
+    You are a marketing advisor for an Australian MSME.
+    Store profile:
+    {store_summary}
+
     Sales data:
     {summary}
 
