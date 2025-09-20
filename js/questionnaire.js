@@ -64,5 +64,5 @@ document.getElementById("formStep4").addEventListener("submit", e => {
   });
 
   // ✅ Go to Data.html after completion
-  window.location.href = "Data.html";
+  window.location.href = "history.html";
 });
