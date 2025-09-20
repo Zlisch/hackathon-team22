@@ -10,7 +10,6 @@ async function getAndSendDataToSaveAsCSV() {
 
     // 2. Check if data actually exists
     if (!storedDataString) {
-        statusElement.textContent = 'Error: No data found in local storage with the key "storeProfile".';
         console.error('Local storage item not found.');
         return;
     }
@@ -42,11 +41,9 @@ async function getAndSendDataToSaveAsCSV() {
         }
 
         const result = await response.json();
-        statusElement.textContent = `Success: ${result.message}`;
         console.log('Server response:', result);
 
     } catch (error) {
-        statusElement.textContent = `Error: ${error.message}`;
         console.error('Failed to send data:', error);
     }
 }
