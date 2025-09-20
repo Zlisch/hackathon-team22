@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Café Insights</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    #output { white-space: pre-wrap; background: #f4f4f4; padding: 1rem; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Café Insights</h1>
+  <button id="getAdviceBtn">Get Advice</button>
+  <div id="output"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+      const output = document.getElementById("output");
+      const button = document.getElementById("getAdviceBtn");
+
+      button.addEventListener("click", async () => {
+        // Show loading message right away
+        output.innerText = "⏳ Generating insights... please wait.";
+
+        try {
+          const res = await fetch("http://127.0.0.1:5000/get_advice", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({})
+          });
+
+          if (!res.ok) {
+            throw new Error("Server error: " + res.status);
+          }
+
+          const data = await res.json();
+          // output.innerText = data.advice;
+          output.innerHTML = marked.parse(data.advice);
+        } catch (err) {
+          output.innerText = "❌ Error: " + err.message;
+        }
+      });
+  </script>
+</body>
+</html>
