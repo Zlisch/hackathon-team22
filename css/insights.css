@@ -1,24 +1,27 @@
 /* General layout */
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
-  background: #f9fafc;
-  color: #333;
+  background: #fafafa;
+  color: #111;
 }
 
-/* Navbar */
 .navbar {
+  position: relative;          /* allows absolute positioning of logo */
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: #2c3e50;
-  padding: 0.8rem 2rem;
-  color: #fff;
+  justify-content: flex-end;   /* push ul to the right */
+  padding: 1rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid #eee;
 }
 
-.navbar .logo {
-  font-weight: bold;
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* perfectly center horizontally */
   font-size: 1.2rem;
+  margin: 0;                   /* reset default h1 margin */
 }
 
 .navbar .nav-links {
@@ -30,15 +33,15 @@ body {
 }
 
 .navbar .nav-links a {
-  color: #ddd;
+  color: #333;
   text-decoration: none;
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
-.navbar .nav-links a.active,
-.navbar .nav-links a:hover {
-  color: #fff;
+.navbar .nav-links a.active {
   font-weight: bold;
+  color: green;
 }
 
 /* Container */

@@ -5,6 +5,10 @@ body {
   color: #111;
 }
 
+.logo {
+  font-size: 1.2rem;
+}
+
 /* Navbar */
 .navbar {
   display: flex;
@@ -23,6 +27,7 @@ body {
 }
 
 .navbar nav a.active {
+  font-weight: bold;
   color: green;
 }
 
@@ -82,4 +87,14 @@ footer {
   font-size: 0.85rem;
   color: #666;
   border-top: 1px solid #eee;
+}
+
+/* Back button pinned left */
+.back-btn {
+  border: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #333;
+  padding: 0.3rem 0.6rem;
 }
