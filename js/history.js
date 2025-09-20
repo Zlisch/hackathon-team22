@@ -64,3 +64,8 @@ Papa.parse("data/data.csv", {
     });
   }
 });
+
+// Back button → go to Questionnaire.html
+document.getElementById("backBtn").addEventListener("click", () => {
+  window.location.href = "questionaire.html";
+});
