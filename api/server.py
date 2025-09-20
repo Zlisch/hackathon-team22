@@ -9,6 +9,32 @@ import csv
 app = Flask(__name__)
 CORS(app)
 
+CSV_FILE = "../data/data.csv"
+
+@app.route("/add-to-csv", methods=["POST"])
+def add_to_csv():
+    data = request.json
+    item, orders, revenue = data.get("item"), data.get("orders"), data.get("revenue")
+
+    if not item or not orders or not revenue:
+        return jsonify({"error": "Invalid data"}), 400
+
+    new_row = [item, orders, revenue]
+
+    file_exists = os.path.isfile(CSV_FILE)
+
+    try:
+        with open(CSV_FILE, "a", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            if not file_exists:  # add header if file new
+                writer.writerow(["ItemName", "Orders", "Revenue"])
+            writer.writerow(new_row)
+        return jsonify({"success": True}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+# end of barcode function
+
 # Define the path where CSV files will be saved
 OUTPUT_FOLDER = '../data'
 # Ensure the output directory exists
@@ -16,13 +42,20 @@ os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 @app.route("/get_advice", methods=["POST"])
 def get_advice():
-    df = pd.read_csv(os.path.join(OUTPUT_FOLDER, "pos_data.csv"))
+    df = pd.read_csv(os.path.join(OUTPUT_FOLDER, "data.csv"))
     top_items = df.sort_values("Orders", ascending=False).head(3)
     bottom_items = df.sort_values("Orders", ascending=True).head(3)
+    
+    store_df = pd.read_csv(os.path.join(OUTPUT_FOLDER, "store_profile.csv"))
+    store_info = store_df.iloc[0].to_dict()
+    store_summary = "\n".join([f"{k}: {v}" for k, v in store_info.items()])
 
     summary = f"Top items:\n{top_items.to_string(index=False)}\n\nBottom items:\n{bottom_items.to_string(index=False)}"
     prompt = f"""
-    You are a marketing advisor for cafés.
+    You are a marketing advisor for an Australian MSME.
+    Store profile:
+    {store_summary}
+
     Sales data:
     {summary}
 

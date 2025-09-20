@@ -1,0 +1,104 @@
+/* history.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #4b3f72;
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.back-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.card {
+  background-color: white;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #4b3f72;
+}
+
+input[type="file"],
+input[type="text"],
+input[type="number"] {
+  display: block;
+  width: 100%;
+  margin: 10px 0 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+#preview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+#editSection {
+  margin-top: 30px;
+}
+
+#editSection h3 {
+  color: #4b3f72;
+}
+
+button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#confirmBtn {
+  background-color: #4b3f72;
+  color: white;
+}
+
+#deleteBtn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
