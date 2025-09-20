@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookStore Insights – Profile</title>
+  <link rel="stylesheet" href="css/profile.css" />
+</head>
+<body>
+  <header class="navbar">
+    <button class="back-btn" onclick="window.location.href='History.html'">← Back</button>
+    <h1 class="logo">📖 BookStore Insights</h1>
+    <nav>
+      <a href="Profile.html" class="active">Profile</a>
+      <a href="History.html">Data</a>
+      <a href="Analytics.html">Analytics</a>
+      <a href="Insights.html">Insights</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="profile-header">
+      <h2 id="storeName">&lt;store_name&gt;</h2>
+      <div class="tag" id="storeType">&lt;store_type&gt;</div>
+      <div class="tag" id="location">&lt;location&gt;</div>
+      <button class="edit-btn" onclick="window.location.href='questionnaire.html'">Edit Profile</button>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <div class="section-title">Store Size</div>
+        <p id="storeSize">&lt;store_size&gt;</p>
+      </div>
+      <div class="card">
+        <div class="section-title">Target Audience</div>
+        <p id="audience">&lt;audience&gt;</p>
+      </div>
+      <div class="card">
+        <div class="section-title">Primary Products</div>
+        <p id="primaryProducts">&lt;primary_products&gt;</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="section-title">Business Goals & Experience</div>
+        <p><b>Experience Level:</b> <span id="yearsInBusiness">&lt;years&gt;</span></p>
+        <p><b>Primary Goals:</b> <span id="goals">&lt;goals&gt;</span></p>
+      </div>
+      <div class="card">
+        <div class="section-title">Current Challenges</div>
+        <p id="challenges">&lt;challenges&gt;</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="section-title">Marketing Budget</div>
+        <p id="budget">&lt;budget&gt;</p>
+      </div>
+      <div class="card">
+        <div class="section-title">Preferred Marketing Channels</div>
+        <p id="marketingChannels">&lt;channels&gt;</p>
+      </div>
+    </div>
+
+    <div class="status">
+      ✅ Profile Complete <br />
+      Your store profile is set up and ready for AI-powered insights generation.
+    </div>
+  </main>
+
+  <script src="js/profile.js"></script>
+</body>
+</html>

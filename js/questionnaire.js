@@ -112,5 +112,5 @@ document.getElementById("formStep4").addEventListener("submit", async e => {
 
   await getAndSendDataToSaveAsCSV(); // waits until fetch finishes
 
-  window.location.href = "history.html";
+  window.location.href = "profile.html";
 });
