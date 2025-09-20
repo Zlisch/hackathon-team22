@@ -16,7 +16,7 @@ os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 @app.route("/get_advice", methods=["POST"])
 def get_advice():
-    df = pd.read_csv("pos_data.csv")
+    df = pd.read_csv(os.path.join(OUTPUT_FOLDER, "pos_data.csv"))
     top_items = df.sort_values("Orders", ascending=False).head(3)
     bottom_items = df.sort_values("Orders", ascending=True).head(3)
 

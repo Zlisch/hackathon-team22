@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 
-df = pd.read_csv('pos_data.csv')
+df = pd.read_csv('data/pos_data.csv')
 
 top_items = df.sort_values('Orders', ascending=False).head(3)
 bottom_items = df.sort_values('Orders', ascending=True).head(3)
