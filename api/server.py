@@ -5,6 +5,7 @@ import requests
 import json
 import os
 import csv
+import ast
 
 app = Flask(__name__)
 CORS(app)
@@ -92,6 +93,23 @@ def save_csv():
     except Exception as e:
         print(f"Error saving file: {e}")
         return jsonify({"error": f"An error occurred: {e}"}), 500
+
+@app.route("/get_store_profile", methods=["GET"])
+def get_store_profile():
+    import pandas as pd, os
+    file_path = os.path.join(OUTPUT_FOLDER, "store_profile.csv")
+    df = pd.read_csv(file_path)
+    # Assuming only one row
+    profile = df.iloc[0].to_dict()
+    channels = profile.get("marketingChannels")
+    if isinstance(channels, str):
+        try:
+            parsed = ast.literal_eval(channels)  # safely parse "['a','b']"
+            if isinstance(parsed, list):
+                profile["marketingChannels"] = parsed
+        except Exception:
+            pass
+    return jsonify(profile)
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
