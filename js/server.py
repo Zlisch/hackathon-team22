@@ -15,7 +15,7 @@ def get_advice():
 
     summary = f"Top items:\n{top_items.to_string(index=False)}\n\nBottom items:\n{bottom_items.to_string(index=False)}"
     prompt = f"""
-    You are a marketing advisor for cafés.
+    You are a marketing advisor for a book store.
     Sales data:
     {summary}
 

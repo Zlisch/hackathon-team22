@@ -1,44 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Café Insights</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; }
-    #output { white-space: pre-wrap; background: #f4f4f4; padding: 1rem; border-radius: 5px; }
-  </style>
+  <link rel="stylesheet" href="css/insights.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-  <h1>Café Insights</h1>
-  <button id="getAdviceBtn">Get Advice</button>
-  <div id="output"></div>
+  <!-- Top navigation -->
+  <nav class="navbar">
+    <div class="logo">Insights</div>
+    <ul class="nav-links">
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Data</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#" class="active">Insights</a></li>
+    </ul>
+  </nav>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Main content -->
+  <main class="container">
+    <h2>AI‑Powered Business Insights</h2>
+    <button id="getAdviceBtn" class="primary-btn">Generate Insights</button>
+
+    <!-- Insights output -->
+    <section id="output" class="card">
+      <p>Click the button above to generate tailored recommendations.</p>
+    </section>
+  </main>
+
   <script>
-      const output = document.getElementById("output");
-      const button = document.getElementById("getAdviceBtn");
+    const output = document.getElementById("output");
+    const button = document.getElementById("getAdviceBtn");
 
-      button.addEventListener("click", async () => {
-        // Show loading message right away
-        output.innerText = "⏳ Generating insights... please wait.";
+    button.addEventListener("click", async () => {
+      output.innerHTML = "<p class='loading'>⏳ Generating insights... please wait.</p>";
 
-        try {
-          const res = await fetch("http://127.0.0.1:5000/get_advice", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({})
-          });
+      try {
+        const res = await fetch("http://127.0.0.1:5000/get_advice", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({})
+        });
 
-          if (!res.ok) {
-            throw new Error("Server error: " + res.status);
-          }
+        if (!res.ok) throw new Error("Server error: " + res.status);
 
-          const data = await res.json();
-          // output.innerText = data.advice;
-          output.innerHTML = marked.parse(data.advice);
-        } catch (err) {
-          output.innerText = "❌ Error: " + err.message;
-        }
-      });
+        const data = await res.json();
+        output.innerHTML = marked.parse(data.advice);
+      } catch (err) {
+        output.innerHTML = `<p class="error">❌ Error: ${err.message}</p>`;
+      }
+    });
   </script>
 </body>
 </html>
