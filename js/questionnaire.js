@@ -1,3 +1,38 @@
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = JSON.parse(localStorage.getItem("bookstoreProfile"));
+  if (!saved) return; // nothing saved yet
+
+  // Step 1
+  if (saved.storeName) document.getElementById("storeName").value = saved.storeName;
+  if (saved.storeType) document.getElementById("storeType").value = saved.storeType;
+  if (saved.location) document.getElementById("location").value = saved.location;
+
+  // Step 2
+  if (saved.storeSize) {
+    const radio = document.querySelector(`input[name="storeSize"][value="${saved.storeSize}"]`);
+    if (radio) radio.checked = true;
+  }
+  if (saved.yearsInBusiness) document.getElementById("years").value = saved.yearsInBusiness;
+  if (saved.primaryProducts) document.getElementById("products").value = saved.primaryProducts;
+
+  // Step 3
+  if (saved.audience) document.getElementById("audience").value = saved.audience;
+  if (saved.goals) document.getElementById("goals").value = saved.goals;
+  if (saved.challenges) document.getElementById("challenges").value = saved.challenges;
+
+  // Step 4
+  if (saved.budget) {
+    const budgetRadio = document.querySelector(`input[name="budget"][value="${saved.budget}"]`);
+    if (budgetRadio) budgetRadio.checked = true;
+  }
+  if (saved.marketingChannels) {
+    saved.marketingChannels.forEach(channel => {
+      const checkbox = document.querySelector(`.checkbox-group input[value="${channel}"]`);
+      if (checkbox) checkbox.checked = true;
+    });
+  }
+});
+
 function saveProfile(updates) {
   const profile = JSON.parse(localStorage.getItem("bookstoreProfile")) || {};
   Object.assign(profile, updates);
