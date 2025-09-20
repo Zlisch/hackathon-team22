@@ -138,8 +138,20 @@ footer {
 }
 
 /* Extra for step 2 */
-.radio-group {
-  margin: 0.5rem 0 1.25rem 0;
+.radio-group label,
+.checkbox-group label {
+  display: flex;         /* Aligns the button and text in a row */
+  align-items: center;   /* Vertically centers the button with the text */
+  margin-bottom: 0.8rem; /* Adds clean spacing between options */
+  cursor: pointer;       /* Changes cursor to a pointer on hover */
+}
+
+/* Target the actual input element inside the label */
+.radio-group input,
+.checkbox-group input {
+  width: auto;           /* Prevents it from taking up 100% width */
+  margin: 0;             /* Resets default margins */
+  margin-right: 0.75rem; /* Adds space between the button and the text */
 }
 
 textarea {
