@@ -46,8 +46,20 @@ Papa.parse("data/data.csv", {
     });
 
     // ---- Pie Chart: Revenue Share by Item ----
-    const pieLabels = data.map(row => row.ItemName);
-    const pieData = data.map(row => row.Revenue);
+   // Aggregate revenue by item name
+  const revenueByItem = {};
+
+  data.forEach(row => {
+    if (revenueByItem[row.ItemName]) {
+      revenueByItem[row.ItemName] += row.Revenue;
+    } else {
+      revenueByItem[row.ItemName] = row.Revenue;
+    }
+  });
+
+const pieLabels = Object.keys(revenueByItem);
+const pieData = Object.values(revenueByItem);
+
 
     new Chart(document.getElementById("pieChart"), {
       type: 'pie',
