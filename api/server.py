@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask import send_from_directory
 from flask_cors import CORS
 import pandas as pd
 import requests
@@ -9,7 +10,7 @@ import ast
 
 app = Flask(__name__)
 CORS(app)
-
+DATA_DIR = os.path.abspath(os.path.join(app.root_path, '..', 'data'))
 # Define the path where CSV files will be saved
 OUTPUT_FOLDER = '../data'
 # Ensure the output directory exists
@@ -110,6 +111,10 @@ def get_store_profile():
         except Exception:
             pass
     return jsonify(profile)
+
+@app.route('/data/<path:filename>')
+def serve_data(filename):
+    return send_from_directory(DATA_DIR, filename)
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
