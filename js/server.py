@@ -22,6 +22,8 @@ def get_advice():
     Rules:
     - Only give advice grounded in this data.
     - Provide relevant marketing strategies and cost-saving ideas when applicable.
+    - Avoid overly long answers. Keep it short and straightforward.
+    - Do not give obvious advice.
     """
 
     resp = requests.post(

@@ -1,0 +1,13 @@
+#output p {
+  margin: 0.3em 0;   /* reduce vertical gap between paragraphs */
+  line-height: 1.3;  /* tighten line spacing */
+}
+
+#output ul, #output ol {
+  margin: 0.3em 0;   /* reduce gap before/after lists */
+  padding-left: 1.2em; /* indent a bit */
+}
+
+#output li {
+  margin: 0.2em 0;   /* reduce gap between list items */
+}
