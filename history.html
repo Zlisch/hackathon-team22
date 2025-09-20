@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transaction Analytics</title>
+  <link rel="stylesheet" href="css/history.css" />
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <button class="back-btn" id="backBtn" onclick="history.back()">← Back</button>
+    <h1 class="logo">📖 BookStore Insights</h1>
+    <nav>
+      <a href="profile.html">Profile</a>
+      <a href="history.html" class="active">Statistics</a>
+      <a href="Insights.html">Insights</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Transaction Analytics</h2>
+    <p class="subtitle">Insights from your transaction history</p>
+
+    <div class="metrics">
+      <div class="metric-card">
+        <h3 id="totalItems">0</h3>
+        <p>Total Items Sold</p>
+      </div>
+      <div class="metric-card">
+        <h3 id="totalRevenue">$0.00</h3>
+        <p>Total Revenue</p>
+      </div>
+      <div class="metric-card">
+        <h3 id="uniqueProducts">0</h3>
+        <p>Unique Products</p>
+      </div>
+      <div class="metric-card">
+        <h3 id="avgItemValue">$0.00</h3>
+        <p>Avg. Item Value</p>
+      </div>
+    </div>
+
+    <div class="charts">
+      <div class="chart-card">
+        <h4>Top Selling Items</h4>
+        <canvas id="barChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h4>Sales by Category</h4>
+        <canvas id="pieChart"></canvas>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    BookStore Insights – Empowering independent bookstores with data-driven decisions
+  </footer>
+
+  <script src="js/history.js"></script>
+</body>
+</html>
