@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookStore Insights - Questionnaire</title>
+  <link rel="stylesheet" href="css/questionnaire.css" />
+</head>
+<body>
+  <header class="navbar">
+    <button class="back-btn">← Back</button>
+    <h1 class="logo">📖 BookStore Insights</h1>
+    <nav>
+      <a href="Profile.html">Profile</a>
+      <a href="History.html">Data</a>
+      <a href="Analytics.html">Analytics</a>
+      <a href="Insights.html">Insights</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Store Information</h2>
+      <p class="subtitle">Tell us about your book and merchandise store</p>
+
+      <div class="progress">
+        <div class="progress-bar" style="width: 25%"></div>
+      </div>
+      <p class="step">Step 1 of 4</p>
+
+      <form id="questionnaireForm">
+        <label for="storeName">Store Name</label>
+        <input type="text" id="storeName" placeholder="Enter your store name" required />
+
+        <label for="storeType">Store Type</label>
+        <select id="storeType" required>
+          <option value="" disabled selected>Select store type</option>
+          <option>Independent bookstore</option>
+          <option>Comic & graphic novel shop</option>
+          <option>University bookstore</option>
+          <option>Mixed books & merchandise</option>
+        </select>
+
+        <label for="location">Location</label>
+        <input type="text" id="location" placeholder="City, State/Country" required />
+
+        <div class="buttons">
+          <button type="button" class="secondary-btn" id="backBtn">Back</button>
+          <button type="submit" class="primary-btn">Next</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    BookStore Insights – Empowering independent bookstores with data-driven decisions
+  </footer>
+
+  <script src="js/questionnaire.js"></script>
+</body>
+</html>
