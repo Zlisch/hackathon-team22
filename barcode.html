@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Barcode Scanner</title>
+  <link rel="stylesheet" href="css/barcode.css">
+</head>
+<body>
+    <header class="navbar">
+    <button class="back-btn" id="backBtn" onclick="history.back()">← Back</button>
+    <h1 class="logo">📖 BookStore Insights</h1>
+    <nav>
+      <a href="profile.html">Profile</a>
+      <a href="history.html" >Data</a>
+      <a href="insight.html">Insights</a>
+    </nav>
+  </header>
+  <div class="card">
+    <h2>Upload Barcode</h2>
+    <input type="file" id="barcodeUpload" accept="image/*">
+    <div id="preview"></div>
+
+    <div id="editSection" style="display:none;">
+      <h3>Edit & Confirm</h3>
+      <input type="text" id="item" placeholder="Item Name">
+      <input type="number" id="orders" placeholder="Orders">
+      <input type="number" id="revenue" placeholder="Revenue">
+      <button class="back-btn" id="deleteBtn" onclick="window.location.href='barcode.html'">Delete</button>
+      <button id="confirmBtn">Add to CSV</button>
+    </div>
+  </div>
+
+  <!-- QuaggaJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+  <script src="js/barcode.js"></script>
+</body>
+</html>
