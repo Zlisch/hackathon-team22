@@ -8,11 +8,7 @@
 </head>
 <body>
   <header class="navbar">
-    <button class="back-btn" id="globalBack">← Back</button>
-    <script>
-    document.getElementById("globalBack").addEventListener("click", () => {
-    window.location.href = "index.html"; // navigate to index.html
-    });
+    <button class="back-btn" id="globalBack" on-click="history.back()">← Back</button>
     </script>
     <h1 class="logo">📖 BookStore Insights</h1>
     <nav>
