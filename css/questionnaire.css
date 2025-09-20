@@ -136,3 +136,37 @@ footer {
   color: #666;
   border-top: 1px solid #eee;
 }
+
+/* Extra for step 2 */
+.radio-group {
+  margin: 0.5rem 0 1.25rem 0;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  background: #f8f8f8;
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Hide inactive steps */
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+}
+
+.checkbox-group {
+  margin: 0.5rem 0 1.25rem 0;
+}
+
+.checkbox-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}

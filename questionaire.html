@@ -8,7 +8,7 @@
 </head>
 <body>
   <header class="navbar">
-    <button class="back-btn">← Back</button>
+    <button class="back-btn" id="globalBack">← Back</button>
     <h1 class="logo">📖 BookStore Insights</h1>
     <nav>
       <a href="Profile.html">Profile</a>
@@ -20,35 +20,126 @@
 
   <main class="container">
     <section class="card">
-      <h2>Store Information</h2>
-      <p class="subtitle">Tell us about your book and merchandise store</p>
 
-      <div class="progress">
-        <div class="progress-bar" style="width: 25%"></div>
+      <!-- Step 1 -->
+      <div class="form-step active" id="step1">
+        <h2>Store Information</h2>
+        <p class="subtitle">Tell us about your book and merchandise store</p>
+        <div class="progress"><div class="progress-bar" style="width: 25%"></div></div>
+        <p class="step">Step 1 of 4</p>
+        <form id="formStep1">
+          <label for="storeName">Store Name</label>
+          <input type="text" id="storeName" placeholder="Enter your store name" required />
+
+          <label for="storeType">Store Type</label>
+          <select id="storeType" required>
+            <option value="" disabled selected>Select store type</option>
+            <option>Independent bookstore</option>
+            <option>Comic & graphic novel shop</option>
+            <option>University bookstore</option>
+            <option>Mixed books & merchandise</option>
+          </select>
+
+          <label for="location">Location</label>
+          <input type="text" id="location" placeholder="City, State/Country" required />
+
+          <div class="buttons">
+            <button type="button" class="secondary-btn" disabled>Back</button>
+            <button type="submit" class="primary-btn">Next</button>
+          </div>
+        </form>
       </div>
-      <p class="step">Step 1 of 4</p>
 
-      <form id="questionnaireForm">
-        <label for="storeName">Store Name</label>
-        <input type="text" id="storeName" placeholder="Enter your store name" required />
+      <!-- Step 2 -->
+      <div class="form-step" id="step2">
+        <h2>Business Details</h2>
+        <p class="subtitle">Help us understand your business better</p>
+        <div class="progress"><div class="progress-bar" style="width: 50%"></div></div>
+        <p class="step">Step 2 of 4</p>
+        <form id="formStep2">
+          <label>Store Size</label>
+          <div class="radio-group">
+            <label><input type="radio" name="storeSize" value="Small (<1,000 sq ft)" required> Small (&lt; 1,000 sq ft)</label><br>
+            <label><input type="radio" name="storeSize" value="Medium (1,000–3,000 sq ft)"> Medium (1,000–3,000 sq ft)</label><br>
+            <label><input type="radio" name="storeSize" value="Large (>3,000 sq ft)"> Large (&gt; 3,000 sq ft)</label>
+          </div>
 
-        <label for="storeType">Store Type</label>
-        <select id="storeType" required>
-          <option value="" disabled selected>Select store type</option>
-          <option>Independent bookstore</option>
-          <option>Comic & graphic novel shop</option>
-          <option>University bookstore</option>
-          <option>Mixed books & merchandise</option>
-        </select>
+          <label for="years">Years in Business</label>
+          <select id="years" required>
+            <option value="" disabled selected>Select experience level</option>
+            <option>0–1 years</option>
+            <option>2–5 years</option>
+            <option>6–10 years</option>
+            <option>10+ years</option>
+          </select>
 
-        <label for="location">Location</label>
-        <input type="text" id="location" placeholder="City, State/Country" required />
+          <label for="products">Primary Products</label>
+          <textarea id="products" placeholder="Describe your main product categories" rows="3"></textarea>
 
-        <div class="buttons">
-          <button type="button" class="secondary-btn" id="backBtn">Back</button>
-          <button type="submit" class="primary-btn">Next</button>
-        </div>
-      </form>
+          <div class="buttons">
+            <button type="button" class="secondary-btn" id="backToStep1">Back</button>
+            <button type="submit" class="primary-btn">Next</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="form-step" id="step3">
+        <h2>Target Audience & Goals</h2>
+        <p class="subtitle">Who do you serve and what are your objectives?</p>
+        <div class="progress"><div class="progress-bar" style="width: 75%"></div></div>
+        <p class="step">Step 3 of 4</p>
+        <form id="formStep3">
+          <label for="audience">Target Audience</label>
+          <textarea id="audience" placeholder="Describe your typical customers" rows="3"></textarea>
+
+          <label for="goals">Business Goals</label>
+          <textarea id="goals" placeholder="What are your main business objectives?" rows="3"></textarea>
+
+          <label for="challenges">Current Challenges</label>
+          <textarea id="challenges" placeholder="What challenges are you currently facing?" rows="3"></textarea>
+
+          <div class="buttons">
+            <button type="button" class="secondary-btn" id="backToStep2">Back</button>
+            <button type="submit" class="primary-btn">Next</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="form-step" id="step4">
+        <h2>Marketing Preferences</h2>
+        <p class="subtitle">Let us know about your marketing approach</p>
+        <div class="progress"><div class="progress-bar" style="width: 100%"></div></div>
+        <p class="step">Step 4 of 4</p>
+        <form id="formStep4">
+          <label>Monthly Marketing Budget</label>
+          <div class="radio-group">
+            <label><input type="radio" name="budget" value="Minimal (<$100)" required> Minimal (&lt;$100)</label><br>
+            <label><input type="radio" name="budget" value="Low ($100–$500)"> Low ($100–$500)</label><br>
+            <label><input type="radio" name="budget" value="Moderate ($500–$1,500)"> Moderate ($500–$1,500)</label><br>
+            <label><input type="radio" name="budget" value="High ($1,500+)"> High ($1,500+)</label>
+          </div>
+
+          <label>Preferred Marketing Channels</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" value="Social Media"> Social Media</label><br>
+            <label><input type="checkbox" value="Email Marketing"> Email Marketing</label><br>
+            <label><input type="checkbox" value="Local Events"> Local Events</label><br>
+            <label><input type="checkbox" value="Book Clubs"> Book Clubs</label><br>
+            <label><input type="checkbox" value="Author Events"> Author Events</label><br>
+            <label><input type="checkbox" value="Online Advertising"> Online Advertising</label><br>
+            <label><input type="checkbox" value="Print Advertising"> Print Advertising</label><br>
+            <label><input type="checkbox" value="Word of Mouth"> Word of Mouth</label>
+          </div>
+
+          <div class="buttons">
+            <button type="button" class="secondary-btn" id="backToStep3">Back</button>
+            <button type="submit" class="primary-btn">Complete Profile</button>
+          </div>
+        </form>
+      </div>
+
     </section>
   </main>
 
